@@ -1,21 +1,16 @@
-
+//add listener to any changes in storage
 chrome.storage.onChanged.addListener(function(changes, namespace) {
+    //iterate over items that changed and send message
     for (key in changes) {
-        var storageChange = changes[key];
-        console.log('Storage key "%s" in namespace "%s" changed. ' +
-            'Old value was "%s", new value is "%s".',
-            key,
-            namespace,
-            storageChange.oldValue,
-            storageChange.newValue);
+        if(key === "onToggle") {
+            sendMessage(changes[key].newValue);
+        }
     }
 });
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (changeInfo.status == 'complete') {
-        chrome.tabs.query({ active: true }, function(tabs) {
-            const msg = "Hello from background ?";
-            chrome.tabs.sendMessage(tabs[0].id, { "message": msg });
-        })
-    }
-});
+//send onToggle message
+function sendMessage(onToggle) {
+    chrome.tabs.query({active: true}, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {"message": onToggle})
+    });
+}
