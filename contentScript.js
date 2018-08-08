@@ -11,12 +11,12 @@ chrome.runtime.onMessage.addListener(function(request) {
     console.log(onToggle);
     if(onToggle){
         $("p").lettering('words');
-
-        $("p span").hover(
-            function(){$(this).addClass("onhover");},
-            function(){$(this).removeClass("onhover");}
-        )
-
+        $("p span").on("mouseenter", function(){$(this).addClass("onhover");})
+        $("p span").on("mouseleave", function(){$(this).removeClass("onhover");})
     }
-
+    else{
+        console.log("i should turn off...")
+        $("p span").off("mouseenter")
+        $("p span").off("mouseleave")
+    }
 });

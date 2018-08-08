@@ -6,5 +6,5 @@ body p span{
     color: white;
     background-color: #ABABAB;
     box-shadow: 1px 3px 6px #777;
-    transition-duration: .05s;
+    transition-duration: .1s;
 }
