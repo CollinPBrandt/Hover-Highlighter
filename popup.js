@@ -24,14 +24,3 @@ onButton.on("click", function() {
         }
     })
 })
-
-/*function sendMessage() {
-    chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-        if (changeInfo.status == 'complete') {
-            chrome.tabs.query({active: true}, function (tabs) {
-                const msg = "Hello from background ?";
-                chrome.tabs.sendMessage(tabs[0].id, {"message": msg});
-            })
-        }
-    });
-}*/
