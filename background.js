@@ -14,6 +14,8 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 function sendMessage(onToggle) {
     //select active tabs and send onToggle message
     chrome.tabs.query({active: true}, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {"onToggle": onToggle});
+        for(let i = 0; i< tabs.length; i++) {
+            chrome.tabs.sendMessage(tabs[i].id, {"onToggle": onToggle});
+        }
     });
 }

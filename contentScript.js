@@ -6,7 +6,6 @@ chrome.runtime.onMessage.addListener(function(request) {
     //if message contains onToggle, check status, turn highlighter on/off
     if(onToggle){
         if(spanified === false) {
-            //
             $("p").blast({ delimiter: "word" });
             spanified = true;
         }
@@ -18,4 +17,5 @@ chrome.runtime.onMessage.addListener(function(request) {
         $(".blast").off("mouseleave")
     }
 });
+
 
