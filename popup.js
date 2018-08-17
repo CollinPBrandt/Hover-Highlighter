@@ -1,8 +1,12 @@
 let onButton = $("button");
 
-//Initialize onToggle to false to begin all tabs with highlighter off
-chrome.storage.sync.set({onToggle: false}, function () {
-    console.log('Highlighter is off')
+window.addEventListener('load', function(){
+    chrome.storage.sync.get('onToggle', function (data) {
+        if(data.onToggle) {
+            onButton.removeClass("buttonOff");
+            onButton.addClass("buttonOn");
+        }
+    });
 });
 
 //If button clicked, change onToggle to true
@@ -11,16 +15,16 @@ onButton.on("click", function() {
         if (data.onToggle) {
             chrome.storage.sync.set({onToggle: false}, function () {
                 console.log('Highlighter is off');
-                onButton.text("Turn on Highlighter");
-                sendMessage();
+                onButton.removeClass("buttonOn");
+                onButton.addClass("buttonOff");
             });
         }
         else {
             chrome.storage.sync.set({onToggle: true}, function () {
                 console.log('Highlighter is on');
-                onButton.text("Turn off Highlighter");
-                sendMessage();
+                onButton.removeClass("buttonOff");
+                onButton.addClass("buttonOn");
             });
         }
-    })
-})
+    });
+});
