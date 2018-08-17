@@ -1,10 +1,9 @@
 let spanified = false;
-
 let hoverStyle = "onhover";
-
+//listen for messages
 chrome.runtime.onMessage.addListener(function(request) {
     let onToggle = JSON.parse(request.onToggle);
-
+    //if message contains onToggle, check status, turn highlighter on/off
     if(onToggle){
         if(spanified === false) {
             //

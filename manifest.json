@@ -1,5 +1,5 @@
 {
-  "name": "Text Highlighter",
+  "name": "Hover Highlight",
   "version": "1.0",
   "description": "Highlight text you hover over",
   "permissions": ["storage"],

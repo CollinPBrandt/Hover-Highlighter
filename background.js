@@ -1,6 +1,4 @@
-chrome.storage.sync.set({onToggle: false}, function () {
-    console.log('Highlighter is off')
-});
+chrome.storage.sync.set({onToggle: false});
 
 //add listener to any changes in storage
 chrome.storage.onChanged.addListener(function(changes, namespace) {
