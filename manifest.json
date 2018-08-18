@@ -1,6 +1,6 @@
 {
   "name": "Hover Highlight",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Highlight text you hover over",
   "permissions": ["storage"],
   "browser_action": {
