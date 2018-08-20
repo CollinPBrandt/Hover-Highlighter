@@ -3,7 +3,7 @@ var onToggle;
 //listen for messages
 chrome.runtime.onMessage.addListener(function(request) {
     onToggle = JSON.parse(request.onToggle);
-    //if message contains onToggle, check status, turn highlighter on/off
+    //if message contains onToggle, perform blasting
     if(onToggle){
         blastParagraphs();
         }
@@ -12,32 +12,18 @@ chrome.runtime.onMessage.addListener(function(request) {
     }
 });
 
-//when hovering over a p tag
-/*$("p").mouseenter(function(){
-    //if the onToggle is true and the p tag has not already been blasted, add blast tag and hover classes
-   if(onToggle && !$(this).hasClass("blast-root")){
-       $(this).blast({delimiter: "word"});
-       addHoverClass();
-   }
-});
-
-$("p").mouseleave(function(){
-    //if the onToggle is true and the p tag has not already been blasted, add blast tag and hover classes
-    if(!onToggle && $(this).hasClass("blast-root")){
-        $(this).blast({delimiter: "word"});
-        addHoverClass();
-    }
-});*/
-
+//for each paragraph hovered over, blast paragraph
 function blastParagraphs(){
     $("p").on("mouseenter", blastHoveredParagraph);
 }
 
+//turn off blasting when hovering over paragraphs and remove blast spans
 function unBlastParagraphs(){
     $("p").off("mouseenter", blastHoveredParagraph);
     $("p").blast(false);
 }
 
+//blast paragraphs that haven't been blasted and add hover class to elements with blast tag
 function blastHoveredParagraph(){
     if(!$(this).hasClass("blast-root")){
         $(this).blast({delimiter: "word"});
