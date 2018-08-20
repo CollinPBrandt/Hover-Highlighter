@@ -1,7 +1,7 @@
 {
-  "name": "Hover Highlight",
+  "name": "Hover Highlighter",
   "version": "0.0.3",
-  "description": "Highlight text you hover over",
+  "description": "Temporary text highlighting for reading",
   "permissions": ["storage"],
   "browser_action": {
     "default_popup": "popup.html",
