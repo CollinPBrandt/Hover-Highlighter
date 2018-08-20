@@ -17,11 +17,11 @@
     {
       "matches": ["<all_urls>"],
       "css": ["contentScript.css"],
-      "js": ["jquery-3.3.1.min.js","jquery.blast.min.js", "contentScript.js"]
+      "js": ["lib/jquery-3.3.1.min.js","lib/jquery.blast.min.js", "contentScript.js"]
     }
   ],
   "background": {
-    "scripts": ["jquery-3.3.1.min.js","jquery.blast.min.js", "background.js"],
+    "scripts": ["lib/jquery-3.3.1.min.js","lib/jquery.blast.min.js", "background.js"],
     "persistent": false
   },
   "manifest_version": 2
