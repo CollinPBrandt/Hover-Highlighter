@@ -1,5 +1,4 @@
 var hoverStyle = "onhover";
-var onToggle;
 //listen for messages
 chrome.runtime.onMessage.addListener(function(request) {
     onToggle = JSON.parse(request.onToggle);
