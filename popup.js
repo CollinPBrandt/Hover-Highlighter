@@ -1,6 +1,6 @@
 let onButton = $("button");
 
-//When popup is loaded, check if hightlighter is on, color green if is
+//When popup is loaded, check if highlighter is on, color green if is
 window.addEventListener('load', function(){
     chrome.storage.sync.get('onToggle', function (data) {
         if(data.onToggle) {

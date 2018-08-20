@@ -4,7 +4,8 @@
   "description": "Highlight text you hover over",
   "permissions": ["storage"],
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": "images/Icon16.png"
   },
   "icons": {
     "16": "images/Icon16.png",
