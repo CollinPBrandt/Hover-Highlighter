@@ -1,7 +1,7 @@
 {
   "name": "Hover Highlighter",
-  "version": "0.0.4",
-  "description": "Temporary text highlighting for reading",
+  "version": "0.0.5",
+  "description": "Temporary text highlighting for faster reading",
   "permissions": ["storage"],
   "browser_action": {
     "default_popup": "popup.html",
@@ -17,7 +17,8 @@
     {
       "matches": ["<all_urls>"],
       "css": ["contentScript.css"],
-      "js": ["lib/jquery-3.3.1.min.js","lib/jquery.blast.min.js", "contentScript.js"]
+      "js": ["lib/jquery-3.3.1.min.js","lib/jquery.blast.min.js", "contentScript.js"],
+      "run_at": "document_end"
     }
   ],
   "background": {

@@ -1,4 +1,4 @@
-chrome.storage.sync.set({onToggle: false});
+//chrome.storage.sync.set({onToggle: false});
 
 //add listener to any changes in storage
 chrome.storage.onChanged.addListener(function(changes, namespace) {
