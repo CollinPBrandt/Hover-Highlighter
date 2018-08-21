@@ -1,41 +1,55 @@
-var hoverStyle = "onhover";
+let hoverStyle = "onhover";
+var directionIsRight = true;
+var oldx = 0;
+
+
 //listen for messages
 chrome.runtime.onMessage.addListener(function(request) {
     onToggle = JSON.parse(request.onToggle);
     //if message contains onToggle, perform blasting
     if(onToggle){
         blastParagraphs();
+        document.addEventListener('mousemove', mouseDirectionRight);
         }
     else {
         unBlastParagraphs();
     }
 });
 
-//for each paragraph hovered over, blast paragraph
-function blastParagraphs(){
-    $("p").on("mouseenter", blastHoveredParagraph);
-}
-
-//turn off blasting when hovering over paragraphs and remove blast spans
-function unBlastParagraphs(){
-    $("p").off("mouseenter", blastHoveredParagraph);
-    $("p").blast(false);
-}
-
-//blast paragraphs that haven't been blasted and add hover class to elements with blast tag
 function blastHoveredParagraph(){
-    if(!$(this).hasClass("blast-root")){
+    if(!this.classList.contains("blast-root")){
         $(this).blast({delimiter: "word"});
         addHoverClass();
     }
 }
 
-function addHoverClass(){
-    $(".blast").mouseenter(function(){
-        $(this).addClass(hoverStyle);
-    });
+function blastParagraphs() {
+    let paragraphs = document.querySelectorAll("p");
+    for (let i = 0; i < paragraphs.length; i++) {
+        paragraphs[i].addEventListener("mouseover", blastHoveredParagraph);
+    }
+}
 
-    $(".blast").mouseleave(function(){
-        $(this).removeClass(hoverStyle);
-    });
+function unBlastParagraphs() {
+    let paragraphs = document.querySelectorAll("p");
+    for (let i = 0; i < paragraphs.length; i++) {
+        paragraphs[i].removeEventListener("mouseover", blastHoveredParagraph);
+    }
+    $("p").blast(false);
+}
+
+function addHoverClass(){
+    let words = document.querySelectorAll(".blast");
+    for (let i = 0; i < words.length; i++) {
+        words[i].addEventListener("mouseenter", function() {
+            if (directionIsRight) {this.classList.add(hoverStyle);}
+        });
+        words[i].addEventListener("mouseleave", function() {this.classList.remove(hoverStyle);});
+    }
+}
+
+function mouseDirectionRight(e) {
+    if (e.pageX > oldx) {directionIsRight = true;}
+    else {directionIsRight = false;}
+    oldx = e.pageX;
 }
